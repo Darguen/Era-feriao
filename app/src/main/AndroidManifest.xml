@@ -13,6 +13,18 @@
         android:theme="@style/Theme.Eraferiao"
         tools:targetApi="31">
         <activity
+            android:name=".ResultadoFeriadoPorFiltro"
+            android:exported="false" />
+        <activity
+            android:name=".About"
+            android:exported="false" />
+        <activity
+            android:name=".Faq"
+            android:exported="false" />
+        <activity
+            android:name=".FeriadoMasCercano"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
