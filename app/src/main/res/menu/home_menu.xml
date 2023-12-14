@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/buscarFlitro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Buscar por Filtro" />
+    <item
+        android:id="@+id/feriadoMasCercano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Feriado Mas Cercano" />
+    <item
+        android:id="@+id/faq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="FAQ" />
+    <item
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="About" />
+</menu>
