@@ -45,4 +45,13 @@
     </string>
 
     <string name="api_error">Hay un error con el recurso de la api</string>
+    <string name="wordName">Nombre</string>
+    <string name="wordComments">Comentarios</string>
+    <string name="wordDate">Fecha</string>
+    <string name="wordInalienable">Irrenunciable</string>
+    <string name="wordType">Tipo</string>
+    <string name="wordLaws">Leyes</string>
+    <string name="wordLawsURL">URL de las Leyes</string>
+    <string name="wordYes">Sí</string>
+    <string name="wordNo">No</string>
 </resources>
