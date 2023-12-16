@@ -54,4 +54,9 @@
     <string name="wordLawsURL">URL de las Leyes</string>
     <string name="wordYes">Sí</string>
     <string name="wordNo">No</string>
+
+    <string name="StrgAbout">About</string>
+    <string name="StrgFAQ">FAQ</string>
+    <string name="StrgFeriadoCercano">Feriado mas cercano</string>
+    <string name="StrgFiltro">Filtro</string>
 </resources>
