@@ -1,16 +1,14 @@
 package cl.brownarmoryelling.era_feriao.Api
 
-import org.json.JSONArray
-import org.json.JSONException
-import android.content.Context
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Background.ApiTask
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
-import cl.brownarmoryelling.era_feriao.R
+import org.json.JSONArray
+import org.json.JSONException
 
 class FeriadosApi : ApiCallback
 {
-    private var URL : String = "https://apis.digital.god.cl/fl/feriados"
+    private var URL : String = "https://apis.digital.gob.cl/fl/feriados"
 
     private fun apiRequest(URL : String, callback : ApiCallback) : MutableList<Feriado>
     {

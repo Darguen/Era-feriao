@@ -1,18 +1,53 @@
 package cl.brownarmoryelling.era_feriao
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         val feriadosApi = FeriadosApi()
         feriadosApi.getData( "2023", "01", "01", "5", "5")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.buscarFlitro -> {
+                val filtro = Intent(this, ResultadoFeriadoPorFiltro::class.java)
+                startActivity(filtro)
+                return true
+            }
+            R.id.feriadoMasCercano -> {
+                val feriadoMasCercano = Intent(this, FeriadoMasCercano::class.java)
+                startActivity(feriadoMasCercano)
+                return true
+            }
+            R.id.faq->{
+                val faq = Intent(this, Faq::class.java)
+                startActivity(faq)
+                return true
+            }
+            R.id.about->{
+                val about = Intent(this, About::class.java)
+                startActivity(about)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }
