@@ -2,5 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="lighpurple">#FFCBAAD6</color>
+    <color name="lighpurple">#093046</color>
+    <color name="barraAux">#19516E</color>
+
 </resources>
