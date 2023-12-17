@@ -41,4 +41,18 @@
         app:layout_constraintTop_toTopOf="@+id/barFiltrarRadius"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/title_filtro"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="@string/StrgFiltro"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/barFiltrarRadius"
+        app:layout_constraintEnd_toEndOf="@+id/barFiltrarRadius"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/barFiltrarRadius"
+        app:layout_constraintTop_toTopOf="@+id/barFiltrarRadius" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

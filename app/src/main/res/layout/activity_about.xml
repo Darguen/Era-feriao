@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".About">
 
+
     <View
-        android:id="@+id/view4"
+        android:id="@+id/viewAboutBack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lighpurple"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="dp" />
+        tools:layout_editor_absoluteY="-16dp" />
 
     <View
         android:id="@+id/barAboutRadius"
@@ -42,5 +43,18 @@
         app:layout_constraintTop_toTopOf="@id/barAboutRadius"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/title_about"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="@string/StrgAbout"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/barAboutRadius"
+        app:layout_constraintEnd_toEndOf="@+id/barAboutRadius"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/barAboutRadius"
+        app:layout_constraintTop_toTopOf="@+id/barAboutRadius" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

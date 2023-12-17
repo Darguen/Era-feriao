@@ -57,6 +57,7 @@
 
     <string name="StrgAbout">About</string>
     <string name="StrgFAQ">FAQ</string>
-    <string name="StrgFeriadoCercano">Feriado mas cercano</string>
+    <string name="StrgFeriadoCercano">Proximos Feriados</string>
     <string name="StrgFiltro">Filtro</string>
+    <string name="StrgMain">Era Feriado</string>
 </resources>
