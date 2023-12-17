@@ -3,9 +3,12 @@ package cl.brownarmoryelling.era_feriao
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.widget.AppCompatImageButton
@@ -20,15 +23,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var faqButton: AppCompatImageButton
     private lateinit var aboutButton: AppCompatImageButton
     private lateinit var holidayButton: AppCompatImageButton
+    private lateinit var toolBar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
+
 
         filterButton = findViewById(R.id.ImgBut_filter)
         faqButton = findViewById(R.id.ImgBut_faq)
         aboutButton = findViewById(R.id.ImgBut_about)
         holidayButton = findViewById(R.id.ImgBut_holyday)
+
+        toolBar = findViewById(R.id.toolbar)
+        
+        toolBar.title = "Era Feriao"
+
+        setSupportActionBar(toolBar)
+
+
 
         filterButton.setOnClickListener{
             val filterB = Intent(this, ResultadoFeriadoPorFiltro::class.java)
