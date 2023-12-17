@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/lighpurple"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="-51dp" />
 
     <View
         android:id="@+id/view2"
@@ -36,7 +36,6 @@
         android:layout_marginBottom="530dp"
         android:background="@drawable/custom_buttom"
         android:minHeight="?attr/actionBarSize"
-        android:textAlignment="textEnd"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,10 +58,10 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.095" />
 
-    <LinearLayout
+    <!--LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="304dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -130,9 +129,55 @@
                 android:background="@drawable/custom_buttom"
                 android:text="@string/StrgAbout"
                 android:textSize="24sp"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null"
+                />
         </LinearLayout>
 
+    </LinearLayout-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.890">
+
+        <ImageButton
+            android:id="@+id/ImgBut_filter"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_buttom_pressed"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/lupa70"/>
+
+        <ImageButton
+            android:id="@+id/ImgBut_holyday"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/custom_buttom_pressed"
+            android:src="@drawable/feriado70"/>
+
+        <ImageButton
+            android:id="@+id/ImgBut_faq"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/custom_buttom_pressed"
+            android:src="@drawable/faq70"/>
+
+        <ImageButton
+            android:id="@+id/ImgBut_about"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/custom_buttom_pressed"
+            android:src="@drawable/about70"/>
     </LinearLayout>
 
     <View
@@ -140,14 +185,13 @@
         android:layout_width="392dp"
         android:layout_height="66dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_buttom"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
