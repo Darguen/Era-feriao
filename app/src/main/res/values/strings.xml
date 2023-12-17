@@ -60,4 +60,11 @@
     <string name="StrgFeriadoCercano">Proximos Feriados</string>
     <string name="StrgFiltro">Filtro</string>
     <string name="StrgMain">Era Feriado</string>
+    <string name="textAbout">Este proyecto fue creado por tres estudiantes de ingenieria
+    en desarrollo de videojuegos y realidad virtual. \n\n
+        Maivomi -  Pedro Videla  -  Luis Otarola\n\n\n
+    Agradecimientos a Api: Feriados legales de Chile por la informacion.\n\n
+        link: https://apis.digital.gob.cl/fl/
+    </string>
+
 </resources>

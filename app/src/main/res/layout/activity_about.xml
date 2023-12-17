@@ -57,4 +57,33 @@
         app:layout_constraintStart_toStartOf="@+id/barAboutRadius"
         app:layout_constraintTop_toTopOf="@+id/barAboutRadius" />
 
+    <View
+        android:id="@+id/textViewAbout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="150dp"
+        app:layout_constraintTop_toBottomOf="@+id/barAboutRadius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custom_buttom"
+        />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        app:layout_constraintTop_toTopOf="@id/textViewAbout"
+        app:layout_constraintBottom_toBottomOf="@id/textViewAbout"
+        app:layout_constraintLeft_toLeftOf="@id/textViewAbout"
+        app:layout_constraintRight_toRightOf="@+id/textViewAbout"
+        android:textColor="@color/white"
+        android:text="@string/textAbout"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

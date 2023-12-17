@@ -10,12 +10,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.widget.AppCompatImageButton
 import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
-
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         toolBar = findViewById(R.id.toolbar)
         
-        toolBar.title = "Era Feriao"
+        toolBar.title = ""
 
         setSupportActionBar(toolBar)
 
