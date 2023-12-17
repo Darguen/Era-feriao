@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lighpurple">#093046</color>
     <color name="barraAux">#19516E</color>
+    <color name="buttonPressed">#FDB835</color>
 
 </resources>
