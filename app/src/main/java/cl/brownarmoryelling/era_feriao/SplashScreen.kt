@@ -40,7 +40,7 @@ class SplashScreen: AppCompatActivity()
         animationSet.addAnimation(scaleUp)
 
 
-        val imageView = findViewById<ImageView>(R.id.imageMarketOnline)
+        val imageView = findViewById<ImageView>(R.id.ImgSplash_icon)
 
         fadeIn.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {

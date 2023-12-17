@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolBar)
 
-
-
         filterButton.setOnClickListener{
             val filterB = Intent(this, ResultadoFeriadoPorFiltro::class.java)
             startActivity(filterB)
