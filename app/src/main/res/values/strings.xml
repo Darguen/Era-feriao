@@ -43,6 +43,6 @@
     <string name="StrgRespuesta3">R: El cronómetro muestra exactamente cuánto tiempo en horas,
         minutos y segundos falta para el feriado más cercano a las 00:00 horas.</string>
 
-    <string name="StrgMainDetailHoliday">Aqui va la iformacion del dia feriado</string>
+    <string name="StrgMainDetailHoliday">Esta solemnidad, que conmemora el nacimiento de Jesucristo en Belén, se celebra el 25 de diciembre en la Iglesia católica, en la Iglesia anglicana, en algunas comunidades protestantes y en la mayoría de las Iglesias ortodoxas.</string>
 
 </resources>

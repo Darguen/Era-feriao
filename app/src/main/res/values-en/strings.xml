@@ -29,5 +29,5 @@
     <string name="StrgRespuesta1">R: Usually, the don\'t change, but there\'s specific commemorations\n        that are placed in a particular day\'s week and this kind change date,\n        like Saint Friday or Naval Glory Day, celebrated on mondays.</string>
     <string name="StrgRespuesta2">R: You can consult in the filter with the exact date (year, month, day),\n        if is holiday, is gonna be showed, else, it will not show any info.</string>
     <string name="StrgRespuesta3">R: The cronometer displays how much time in hours,\n        minutes and seconds left to the nearest holiday day to the 12 am.</string>
-    <string name="StrgMainDetailHoliday">Here\'s the holiday info</string>
+    <string name="StrgMainDetailHoliday">Esta solemnidad, que conmemora el nacimiento de Jesucristo en Belén, se celebra el 25 de diciembre en la Iglesia católica, en la Iglesia anglicana, en algunas comunidades protestantes y en la mayoría de las Iglesias ortodoxas.</string>
 </resources>
