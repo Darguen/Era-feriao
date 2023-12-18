@@ -49,6 +49,7 @@
         android:text="@string/StrgFiltro"
         android:textColor="@color/white"
         android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/barFiltrarRadius"
         app:layout_constraintEnd_toEndOf="@+id/barFiltrarRadius"
         app:layout_constraintHorizontal_bias="0.0"
