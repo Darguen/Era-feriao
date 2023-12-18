@@ -13,7 +13,7 @@ class FiltroDialog(private val context: Context) {
     private val feriadosApi = FeriadosApi()
     private var selectedOption: String? = null
     fun showOptionsDialog() {
-        val options = arrayOf("Dia", "Mes", "Año")
+        val options = arrayOf("Año", "Año y Mes", "Año, Mes y Día")
 
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Filtrar por: ")
@@ -21,14 +21,17 @@ class FiltroDialog(private val context: Context) {
                 // Handle item click here
                 val selectedOption = options[i]
 
-                if(selectedOption == "Año"){
-                    showAnioDialog()
+                if(selectedOption == "Año")
+                {
+                    showAnioDialog(0)
                 }
-                if(selectedOption == "Mes"){
-                    showMesDialog()
+                if(selectedOption == "Año y Mes")
+                {
+                    showAnioDialog(1)
                 }
-                if(selectedOption == "Dia"){
-                    showDiaDialog()
+                if(selectedOption == "Año, Mes y Día")
+                {
+                    showAnioDialog(2)
                 }
                 // Do something with the selected option
             }
@@ -45,19 +48,41 @@ class FiltroDialog(private val context: Context) {
 
     private var dialogCallback: DialogCallback? = null
 
+    private fun getMonth(month : String) : String
+    {
+        when(month)
+        {
+            "Enero" -> {return "1"}
+            "Febrero" -> {return "2"}
+            "Marzo" -> {return "3"}
+            "Abril" -> {return "4"}
+            "Mayo" -> {return "5"}
+            "Junio" -> {return "6"}
+            "Julio" -> {return "7"}
+            "Agosto" -> {return "8"}
+            "Septiembre" -> {return "9"}
+            "Octubre" -> {return "10"}
+            "Noviembre" -> {return "11"}
+            "Diciembre" -> {return "12"}
+        }
+        return " "
+    }
+
     fun setDialogCallback(callback: DialogCallback) {
         this.dialogCallback = callback
     }
 
-    fun showAnioDialog(){
+    fun showAnioDialog(remainDialogs : Int)
+    {
         val options = arrayOf("2013","2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
         val builder = AlertDialog.Builder(context)
+        var selectedOption = ""
         builder.setTitle("Seleccione un año: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
-                val selectedOption = options[i]
+                selectedOption = options[i]
                 // Notify the callback when the option is selected
-                dialogCallback?.onOptionSelected(selectedOption)
-
+                if (remainDialogs == 0) dialogCallback?.onOptionSelected(selectedOption)
+                else showMesDialog(remainDialogs - 1, selectedOption)
 
                 when (selectedOption){
                     "2013" ->{
@@ -71,15 +96,12 @@ class FiltroDialog(private val context: Context) {
                         //Log.i("apiComplete", request.toString())
                         //Log.i("FiltroDialog",feriadosApi.getResultList().size.toString())
                         //println("apiResponse $apiResponse")
-
-
-
-
                     }
                 }
 
             }
-            .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
+            .setNegativeButton("Cancel")
+            { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()
             }
 
@@ -103,14 +125,19 @@ class FiltroDialog(private val context: Context) {
         return year
     }
 
-    fun showMesDialog(){
+    fun showMesDialog(remainDialogs : Int, year : String)
+    {
         val options = arrayOf("Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
             "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
         val builder = AlertDialog.Builder(context)
+        var selectedOption = "0"
+
         builder.setTitle("Seleccione un mes: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
                 // Handle item click here
-                val selectedOption = options[i]
+                selectedOption = options[i]
+                if (remainDialogs == 0) dialogCallback?.onOptionSelected(year + "/" + getMonth(selectedOption).toInt())
+                else showDiaDialog(getMonth(selectedOption).toInt(), year)
                 // Do something with the selected option
             }
             .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
@@ -120,13 +147,46 @@ class FiltroDialog(private val context: Context) {
         builder.create().show()
     }
 
-    fun showDiaDialog(){
-        val options = arrayOf("1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-            "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+    fun showDiaDialog(month : Int, year : String)
+    {
+        var dayArray : Array<String> = emptyArray()
+
+        if(month == 2)
+        {
+            if(year == "2016" || year == "2020")
+            {
+                val febBicie = arrayOf("1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                    "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29")
+                dayArray = febBicie;
+            }
+            else
+            {
+                val febNormie = arrayOf("1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                    "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28")
+
+                dayArray = febNormie;
+            }
+        }
+        else if((month <= 7 && month % 2 == 1) || (month > 7 && month % 2 == 0))
+        {
+            val mesPar = arrayOf("1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31")
+            dayArray = mesPar;
+        }
+        else
+        {
+            val mesImpar = arrayOf("1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30")
+            dayArray = mesImpar;
+        }
+
+        val options = dayArray
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Seleccione un dia: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
                 val selectedOption = options[i]
+                dialogCallback?.onOptionSelected(year + "/" + month + "/" + selectedOption)
+
             }
             .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()

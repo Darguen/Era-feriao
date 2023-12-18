@@ -34,7 +34,7 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         setContentView(R.layout.activity_feriado_mas_cercano)
 
         option = ""
-        filtroDialog.showAnioDialog()
+        filtroDialog.showOptionsDialog()
 
         configureFeriadosLV()
 
