@@ -15,7 +15,9 @@ Para solucionar esto creamos una aplicación que en un inicio muesta cuánto tie
 
 ## Link video
 
+[https://youtu.be/km5wTvdmaZk]
+
 ## Link repositorio
 
-https://github.com/Darguen/Era-feriao/tree/master
+[https://github.com/Darguen/Era-feriao/tree/master]
 
