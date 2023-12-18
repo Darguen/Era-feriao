@@ -52,6 +52,8 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                 Log.i("PostNewURL", newUrl)
             }
         })
+
+
         
     }
 
@@ -97,7 +99,13 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                 Log.i("FeriadosApi","amount of list:" + list.size.toString())
             }
 
+<<<<<<< Updated upstream
 
+=======
+            val feriados = mutableListOf<Feriado>()
+            val feriadosPosteriores = list.filter { it.date!! > filtroDialog.getSpecificDate() }
+            feriadosCercanos = feriadosPosteriores.take(5)
+>>>>>>> Stashed changes
         } catch (e: JSONException) {
             e.printStackTrace()
             list.add(Feriado("", "", "", false, "", arrayListOf(), arrayListOf()))
