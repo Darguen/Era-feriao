@@ -18,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/custom_buttom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="@string/StrgFAQ"
         android:textColor="@color/white"
         android:textSize="30dp"
@@ -54,5 +55,100 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/barFAQRadius"
         app:layout_constraintTop_toTopOf="@+id/barFAQRadius" />
+
+    <View
+        android:id="@+id/textViewFAQ"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custom_buttom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barFAQRadius"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="150dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.705"
+        tools:ignore="ExtraText">
+
+        <TextView
+            android:id="@+id/TextViewFAQ_answ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:onClick="mostrarRespuesta1"
+            android:text="@string/StrgPregunta1"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/TextViewFAQ_resp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/StrgRespuesta1"
+            android:textSize="20dp"
+            android:textColor="@color/buttonPressed"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/TextViewFAQ_answ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:onClick="mostrarRespuesta2"
+            android:text="@string/StrgPregunta2"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/TextViewFAQ_resp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/StrgRespuesta2"
+            android:textSize="20dp"
+            android:textColor="@color/buttonPressed"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/TextViewFAQ_answ3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:onClick="mostrarRespuesta3"
+            android:text="@string/StrgPregunta3"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/TextViewFAQ_resp3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/StrgRespuesta3"
+            android:textSize="20dp"
+            android:textColor="@color/buttonPressed"
+            android:visibility="gone"/>
+        />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

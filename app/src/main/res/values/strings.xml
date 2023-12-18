@@ -67,4 +67,16 @@
         link: https://apis.digital.gob.cl/fl/
     </string>
 
+    <!--Precuntas y respuestas del FAQ-->
+    <string name="StrgPregunta1">1. ¿Los feriados cambian cada año?</string>
+    <string name="StrgPregunta2">2. ¿Como puedo saber si un dia cae feriado?</string>
+    <string name="StrgPregunta3">3. ¿Que muestra el cronometro?</string>
+    <string name="StrgRespuesta1">R: Generalmente no varian, pero hay conmemoraciones especificas
+        que se celebran en un dia de la semana en particular y estas si cambian de fecha, como;
+        Viernes Santos o Dia de las Glorias Navales los lunes.</string>
+    <string name="StrgRespuesta2">R: Puedes consultar en el filtro con la fecha exacta(año, mes, dia), la cual te
+        mostrara el feriado y en caso de no ser feriado, no te nada.</string>
+    <string name="StrgRespuesta3">R: El cronometro muestra exactamente cuando tiempo en horas, minutos y segundos
+    faltan para el feriado mas cercano a las 00:00 horas.</string>
+
 </resources>
