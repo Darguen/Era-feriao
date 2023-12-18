@@ -15,6 +15,11 @@ import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
 import androidx.appcompat.widget.Toolbar
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import android.os.Handler
+import android.os.Looper
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var aboutButton: AppCompatImageButton
     private lateinit var holidayButton: AppCompatImageButton
     private lateinit var toolBar: Toolbar
+    private lateinit var textViewTiempo: TextView
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         holidayButton = findViewById(R.id.ImgBut_holyday)
 
         toolBar = findViewById(R.id.toolbar)
-        
+        textViewTiempo = findViewById(R.id.textCronometro)
+
         toolBar.title = ""
 
         setSupportActionBar(toolBar)
@@ -55,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             val holidayB = Intent(this, FeriadoMasCercano::class.java)
             startActivity(holidayB)
         }
+        // Actualizar el tiempo cada segundo
+        actualizarTiempoCadaSegundo()
 
         val feriadosApi = FeriadosApi()
         feriadosApi.getData( "2023", "01", "01", "5", "5")
@@ -88,5 +99,34 @@ class MainActivity : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+    private fun actualizarTiempoCadaSegundo() {
+        // Crea un Runnable para actualizar el tiempo
+        val runnable = object : Runnable {
+            override fun run() {
+                // Obtén la hora actual
+                val horaActual = obtenerHoraActual()
+
+                // Actualiza el TextView
+                textViewTiempo.text = "$horaActual"
+
+                // Programa la siguiente actualización después de 1 segundo
+                handler.postDelayed(this, 1000)
+            }
+        }
+
+        // Ejecuta el Runnable inmediatamente
+        handler.post(runnable)
+    }
+
+    private fun obtenerHoraActual(): String {
+        val formato = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        return formato.format(Date())
+    }
+
+    override fun onDestroy() {
+        // Detén las actualizaciones al destruir la actividad para evitar pérdida de memoria
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 }

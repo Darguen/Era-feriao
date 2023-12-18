@@ -79,4 +79,6 @@
     <string name="StrgRespuesta3">R: El cronometro muestra exactamente cuando tiempo en horas, minutos y segundos
     faltan para el feriado mas cercano a las 00:00 horas.</string>
 
+    <string name="StrgMainDetailHoliday">Aqui va la iformacion del dia feriado</string>
+
 </resources>
