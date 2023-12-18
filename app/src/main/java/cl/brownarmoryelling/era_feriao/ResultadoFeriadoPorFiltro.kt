@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import cl.brownarmoryelling.era_feriao.Adapters.FeriadoAdapter
-import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
+import cl.brownarmoryelling.era_feriao.Api.HolidaysApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Background.ApiTask
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
@@ -23,7 +23,7 @@ class ResultadoFeriadoPorFiltro : AppCompatActivity(), ApiCallback {
 
     private val filtroDialog = FiltroDialog(this)
     private val filtroDialogOptions = FiltroDialog(this)
-    private val feriadosApi = FeriadosApi()
+    private val feriadosApi = HolidaysApi()
     private var URL: String = "https://apis.digital.gob.cl/fl/feriados"
     private  var newUrl = URL
     private lateinit var option: String

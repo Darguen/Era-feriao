@@ -4,27 +4,24 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
-import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
+import cl.brownarmoryelling.era_feriao.Api.HolidaysApi
 
 
 class FiltroDialog(private val context: Context) {
 
-    private val feriadosApi = FeriadosApi()
+    private val feriadosApi = HolidaysApi()
     private lateinit var selectedOption: String
 
-    //private var optionsDialogCallback: DialogCallback? = null
+    private var optionsDialogCallback: DialogCallback? = null
     private lateinit var selectedFilter: String
     var selected = ""
-<<<<<<< Updated upstream
-=======
-    private  var specificDate = ""
+    private var specificDate = ""
 
     fun showTop5HolidaysDialog()
     {
         showAnioDialog(1)
     }
 
->>>>>>> Stashed changes
     fun showOptionsDialog() {
         val options = arrayOf("Año", "Año y Mes", "Año, Mes y Día")
 
@@ -91,7 +88,7 @@ class FiltroDialog(private val context: Context) {
 
     fun showAnioDialog(remainDialogs : Int)
     {
-        val options = arrayOf("2013","2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
+        val options = arrayOf("2013" ,"2014" , "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
         val builder = AlertDialog.Builder(context)
         var selectedOption = ""
         builder.setTitle("Seleccione un año: ")
@@ -121,12 +118,9 @@ class FiltroDialog(private val context: Context) {
         return selected
     }*/
 
-    fun getSelectedFilter(): String {
-        return selectedFilter
-    }
-
-    fun getSelectedOption(): String {
-        return selectedOption
+    fun getSpecificDate(): String
+    {
+        return specificDate
     }
 
 
@@ -151,7 +145,7 @@ class FiltroDialog(private val context: Context) {
                     dialogCallback?.onOptionSelected(year + "/" + getMonth(selectedOption).toInt())
                     this.selectedOption = year + "/" + getMonth(selectedOption).toInt()
                 }
-                else showDiaDialog(getMonth(selectedOption).toInt(), year)
+                else showDiaDialog(getMonth(selectedOption).toInt(), year, remainDialogs - 1)
                 // Do something with the selected option
             }
             .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
@@ -161,7 +155,7 @@ class FiltroDialog(private val context: Context) {
         builder.create().show()
     }
 
-    fun showDiaDialog(month : Int, year : String)
+    fun showDiaDialog(month : Int, year : String, remainDialogs : Int)
     {
         var dayArray : Array<String> = emptyArray()
 
@@ -200,7 +194,12 @@ class FiltroDialog(private val context: Context) {
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
                 val selectedOption = options[i]
 
-                dialogCallback?.onOptionSelected(year + "/" + month + "/" + selectedOption)
+                if (remainDialogs == 0) dialogCallback?.onOptionSelected(year + "/" + month + "/" + selectedOption)
+                else
+                {
+                    specificDate = year + "/" + month + "/" + selectedOption
+                }
+
                 this.selectedOption = year + "/" + month + "/" + selectedOption
 
             }
