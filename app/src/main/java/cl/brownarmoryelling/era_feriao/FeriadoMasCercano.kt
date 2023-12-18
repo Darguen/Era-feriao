@@ -24,6 +24,8 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
     private lateinit var tipoTextView: TextView
     private lateinit var leyesTextView: TextView
     private lateinit var urlLeyesTextView: TextView
+    private  var newUrl = URL
+    private lateinit var option: String
 
 
     override fun onCreate(savedInstanceState: Bundle?){
@@ -37,22 +39,27 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         tipoTextView = findViewById(R.id.feriadoTypeTV)
         leyesTextView = findViewById(R.id.feriadoLawsTV)
         urlLeyesTextView = findViewById(R.id.feriadoLawsUrlTV)
-        //filtroDialog.showAnioDialog()
+        option = ""
+        filtroDialog.showAnioDialog()
 
-        //Log.i("getAnio", filtroDialog.getAnio())
+        filtroDialog.setDialogCallback(object : FiltroDialog.DialogCallback {
+            override fun onOptionSelected(selectedOption: String) {
+                // Handle the selected option here
+                println("Selected Option: $selectedOption")
+                 option = selectedOption
+                Log.i("Option", option)
+                newUrl = feriadosApi.getData(option, "5")
+                Log.i("NewURL", newUrl)
 
-        /*when (filtroDialog.getAnio()) {
-            "2013" -> {
-                val apiResponseActivity = Intent(this, Faq::class.java)
-                startActivity(apiResponseActivity)
+                val apiRequestTask = ApiTask(this@FeriadoMasCercano)
+                apiRequestTask.execute(newUrl)
+                Log.i("PostNewURL", newUrl)
             }
-
-
-        }*/
-
-        val apiRequestTask = ApiTask(this)
-        apiRequestTask.execute(URL)
+        })
+        
     }
+
+
 
     private fun apiRequest(URL: String, callback: ApiCallback): MutableList<Feriado> {
         val apiRequestTask = ApiTask(callback)

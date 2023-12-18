@@ -11,7 +11,7 @@ import cl.brownarmoryelling.era_feriao.Classes.Feriado
 class FiltroDialog(private val context: Context) {
 
     private val feriadosApi = FeriadosApi()
-    private var selected = ""
+    private var selectedOption: String? = null
     fun showOptionsDialog() {
         val options = arrayOf("Dia", "Mes", "Año")
 
@@ -39,13 +39,25 @@ class FiltroDialog(private val context: Context) {
         builder.create().show()
     }
 
+    interface DialogCallback {
+        fun onOptionSelected(selectedOption: String)
+    }
+
+    private var dialogCallback: DialogCallback? = null
+
+    fun setDialogCallback(callback: DialogCallback) {
+        this.dialogCallback = callback
+    }
+
     fun showAnioDialog(){
         val options = arrayOf("2013","2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Seleccione un año: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
                 val selectedOption = options[i]
-                selected = selectedOption
+                // Notify the callback when the option is selected
+                dialogCallback?.onOptionSelected(selectedOption)
+
 
                 when (selectedOption){
                     "2013" ->{
@@ -53,7 +65,8 @@ class FiltroDialog(private val context: Context) {
                         //val dataFeriados = feriadosApi.getData(selectedOption, "5", "1")
                         //Log.i("apiRe", feriadosApi.onRequestComplete("2013").toString())
 
-                        val apiResponse = feriadosApi.getData(selectedOption)
+                        //val apiResponse = feriadosApi.getData(selectedOption)
+                        setYear(selectedOption)
                         //val request = feriadosApi.onRequestComplete(apiResponse.toString())
                         //Log.i("apiComplete", request.toString())
                         //Log.i("FiltroDialog",feriadosApi.getResultList().size.toString())
@@ -74,11 +87,20 @@ class FiltroDialog(private val context: Context) {
     }
 
 
-    fun getAnio(): String{
+    /*fun getYear():String{
 
-        Log.i("año: ", selected)
+        return selected
+    }*/
 
-            return selected
+    fun getSelectedOption(): String? {
+        return selectedOption
+    }
+
+
+
+    fun setYear(year: String): String{
+        Log.i("year", year)
+        return year
     }
 
     fun showMesDialog(){
