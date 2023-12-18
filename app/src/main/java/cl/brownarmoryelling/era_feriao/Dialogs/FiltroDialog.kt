@@ -1,19 +1,19 @@
 package cl.brownarmoryelling.era_feriao.Dialogs
 
-import android.app.AlertDialog;
+import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
 import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
+import cl.brownarmoryelling.era_feriao.Classes.Feriado
 
 
 class FiltroDialog(private val context: Context) {
 
-    val feriadosApi = FeriadosApi()
+    private val feriadosApi = FeriadosApi()
+    private var selectedOption: String? = null
     fun showOptionsDialog() {
         val options = arrayOf("Dia", "Mes", "Año")
-
-
 
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Filtrar por: ")
@@ -39,34 +39,68 @@ class FiltroDialog(private val context: Context) {
         builder.create().show()
     }
 
-    fun showAnioDialog():String{
+    interface DialogCallback {
+        fun onOptionSelected(selectedOption: String)
+    }
+
+    private var dialogCallback: DialogCallback? = null
+
+    fun setDialogCallback(callback: DialogCallback) {
+        this.dialogCallback = callback
+    }
+
+    fun showAnioDialog(){
         val options = arrayOf("2013","2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023")
         val builder = AlertDialog.Builder(context)
-        var option = " "
         builder.setTitle("Seleccione un año: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
-                // Handle item click here
                 val selectedOption = options[i]
-                option = selectedOption
-                // Do something with the selected option
+                // Notify the callback when the option is selected
+                dialogCallback?.onOptionSelected(selectedOption)
+
 
                 when (selectedOption){
-                    "2013" ->{feriadosApi.getData(selectedOption, "5", "1")
-                    Log.i("api", feriadosApi.getData(selectedOption, "5", "1").toString())}
+                    "2013" ->{
+                        //feriadosApi.processingData(selectedOption)
+                        //val dataFeriados = feriadosApi.getData(selectedOption, "5", "1")
+                        //Log.i("apiRe", feriadosApi.onRequestComplete("2013").toString())
+
+                        //val apiResponse = feriadosApi.getData(selectedOption)
+                        setYear(selectedOption)
+                        //val request = feriadosApi.onRequestComplete(apiResponse.toString())
+                        //Log.i("apiComplete", request.toString())
+                        //Log.i("FiltroDialog",feriadosApi.getResultList().size.toString())
+                        //println("apiResponse $apiResponse")
+
+
+
+
+                    }
                 }
+
             }
             .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()
             }
 
         builder.create().show()
-       return option
     }
 
-    fun getAnio(): String{
-        var anioSeleccionado = showAnioDialog()
 
-            return anioSeleccionado
+    /*fun getYear():String{
+
+        return selected
+    }*/
+
+    fun getSelectedOption(): String? {
+        return selectedOption
+    }
+
+
+
+    fun setYear(year: String): String{
+        Log.i("year", year)
+        return year
     }
 
     fun showMesDialog(){
@@ -92,9 +126,7 @@ class FiltroDialog(private val context: Context) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Seleccione un dia: ")
             .setItems(options) { dialogInterface: DialogInterface, i: Int ->
-                // Handle item click here
                 val selectedOption = options[i]
-                // Do something with the selected option
             }
             .setNegativeButton("Cancel") { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()
