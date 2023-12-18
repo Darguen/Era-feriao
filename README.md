@@ -21,3 +21,7 @@ Para solucionar esto creamos una aplicación que en un inicio muesta cuánto tie
 
 [https://github.com/Darguen/Era-feriao/tree/master]
 
+## Link apk
+
+[https://drive.google.com/file/d/174w3e6cpFYIzn-VJrA6xMXdoji2JEOoT/view?usp=sharing]
+
