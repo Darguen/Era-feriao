@@ -1,14 +1,12 @@
 package cl.brownarmoryelling.era_feriao
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
 import cl.brownarmoryelling.era_feriao.Adapters.FeriadoAdapter
-import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
+import cl.brownarmoryelling.era_feriao.Api.HolidaysApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Background.ApiTask
 import cl.brownarmoryelling.era_feriao.Classes.Feriado
@@ -24,7 +22,7 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
     private lateinit var feriadosLV : ListView
 
     private val filtroDialog = FiltroDialog(this)
-    private val feriadosApi = FeriadosApi()
+    private val feriadosApi = HolidaysApi()
     private var URL: String = "https://apis.digital.gob.cl/fl/feriados/2013"
     private  var newUrl = URL
     private lateinit var option: String
@@ -34,7 +32,7 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         setContentView(R.layout.activity_feriado_mas_cercano)
 
         option = ""
-        filtroDialog.showOptionsDialog()
+        filtroDialog.showTop5HolidaysDialog()
 
         configureFeriadosLV()
 
@@ -44,7 +42,7 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                 println("Selected Option: $selectedOption")
                  option = selectedOption
                 Log.i("Option", option)
-                newUrl = feriadosApi.getData(option, "5")
+                newUrl = feriadosApi.getData(option)
                 Log.i("NewURL", newUrl)
 
                 val apiRequestTask = ApiTask(this@FeriadoMasCercano)
@@ -67,7 +65,10 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         val list: MutableList<Feriado> = mutableListOf()
         Log.i("FeriadosApi", "JSON Response: $result")
 
-        try {
+        var feriadosCercanos : List<Feriado> = listOf()
+
+        try
+        {
 
             val jsonArray = JSONArray(result)
             for (i in 0 until jsonArray.length()) {
@@ -97,13 +98,14 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                 Log.i("FeriadosApi","amount of list:" + list.size.toString())
             }
 
-
+            val feriadosPosteriores = list.filter { it.date!! > filtroDialog.getSpecificDate() }
+            feriadosCercanos = feriadosPosteriores.take(5)
         } catch (e: JSONException) {
             e.printStackTrace()
             list.add(Feriado("", "", "", false, "", arrayListOf(), arrayListOf()))
         }
 
-        return list.toMutableList()
+        return feriadosCercanos.toMutableList()
     }
 
     override fun onRequestComplete(result: String): MutableList<Feriado>

@@ -59,8 +59,8 @@
 
     <ListView
         android:id="@+id/holidayLV"
-        android:layout_width="415dp"
-        android:layout_height="686dp"
+        android:layout_width="409dp"
+        android:layout_height="562dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.77"

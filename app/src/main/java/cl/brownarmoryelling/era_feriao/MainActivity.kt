@@ -3,24 +3,17 @@ package cl.brownarmoryelling.era_feriao
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
-import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
-import cl.brownarmoryelling.era_feriao.Background.ApiCallback
-import cl.brownarmoryelling.era_feriao.Classes.Feriado
+import cl.brownarmoryelling.era_feriao.Api.HolidaysApi
 import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -69,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         // Actualizar el tiempo cada segundo
         actualizarTiempoCadaSegundo()
 
-        val feriadosApi = FeriadosApi()
+        val feriadosApi = HolidaysApi()
         feriadosApi.getData( "2023", "01", "01", "5", "5")
     }
 
