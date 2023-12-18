@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Era-feriao</string>
+    <string name="title_activity_feriado_mas_cercano">Nearest Holiday</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="api_error">There\'s an error with the api\'s resource</string>
+    <string name="wordName">Name</string>
+    <string name="wordComments">Comments</string>
+    <string name="wordDate">Date</string>
+    <string name="wordInalienable">Irrenunciable</string>
+    <string name="wordType">Type</string>
+    <string name="wordLaws">Laws</string>
+    <string name="wordLawsURL">Law\'s URL</string>
+    <string name="wordYes">Yes</string>
+    <string name="wordNo">No</string>
+    <string name="StrgAbout">About</string>
+    <string name="StrgFAQ">FAQ</string>
+    <string name="StrgFeriadoCercano">Next Holidays</string>
+    <string name="StrgFiltro">Filter</string>
+    <string name="StrgMain">Era Feriado</string>
+    <string name="StrgTop5Feriados">Top 5 Nearest Holidays</string>
+    <string name="textAbout">"This project was created by 3 students of enginery         in videogame's development and virtual reality.            Maybomi Tobar -  Pedro Videla  -  Luis Otarola        Special apreciations to API Feriados Legales de Chile por la información.           link: https://apis.digital.gob.cl/fl/     "</string>
+    <string name="StrgPregunta1">1. The holidays changes every year?</string>
+    <string name="StrgPregunta2">2. How I can know if today is holiday?</string>
+    <string name="StrgPregunta3">3. What\'s the cronometer showing?</string>
+    <string name="StrgRespuesta1">R: Usually, the don\'t change, but there\'s specific commemorations\n        that are placed in a particular day\'s week and this kind change date,\n        like Saint Friday or Naval Glory Day, celebrated on mondays.</string>
+    <string name="StrgRespuesta2">R: You can consult in the filter with the exact date (year, month, day),\n        if is holiday, is gonna be showed, else, it will not show any info.</string>
+    <string name="StrgRespuesta3">R: The cronometer displays how much time in hours,\n        minutes and seconds left to the nearest holiday day to the 12 am.</string>
+    <string name="StrgMainDetailHoliday">Here\'s the holiday info</string>
+</resources>

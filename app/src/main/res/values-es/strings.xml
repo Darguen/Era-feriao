@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Era-feriao</string>
+    <string name="title_activity_feriado_mas_cercano">FeriadoMasCercano</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="api_error">Hay un error con el recurso de la api</string>
+    <string name="wordName">Nombre</string>
+    <string name="wordComments">Comentarios</string>
+    <string name="wordDate">Fecha</string>
+    <string name="wordInalienable">Irrenunciable</string>
+    <string name="wordType">Tipo</string>
+    <string name="wordLaws">Leyes</string>
+    <string name="wordLawsURL">URL de las Leyes</string>
+    <string name="wordYes">Sí</string>
+    <string name="wordNo">No</string>
+    <string name="StrgAbout">Acerca De</string>
+    <string name="StrgFAQ">Preguntas Frecuentes</string>
+    <string name="StrgFeriadoCercano">Proximos Feriados</string>
+    <string name="StrgFiltro">Filtro</string>
+    <string name="StrgMain">Era Feriado</string>
+    <string name="StrgTop5Feriados">Top 5 Feriados más cercanos</string>
+    <string name="textAbout">Este proyecto fue creado por tres estudiantes de ingeniería
+        en desarrollo de videojuegos y realidad virtual. \n\n
+        Maybomi Tobar -  Pedro Videla  -  Luis Otarola\n\n\n
+    Agradecimientos a la API Feriados Legales de Chile por la información.\n\n
+        link: https://apis.digital.gob.cl/fl/
+    </string>
+    <string name="StrgPregunta1">1. ¿Los feriados cambian cada año?</string>
+    <string name="StrgPregunta2">2. ¿Cómo puedo saber si un día es feriado?</string>
+    <string name="StrgPregunta3">3. ¿Qué muestra el cronómetro?</string>
+    <string name="StrgRespuesta1">R: Generalmente, no varían, pero hay conmemoraciones específicas
+        que se celebran en un día de la semana en particular y estas sí cambian de fecha,
+        como Viernes Santos o Día de las Glorias Navales, que se celebran los lunes.</string>
+    <string name="StrgRespuesta2">R: Puedes consultar en el filtro con la fecha exacta (año, mes, día),
+        la cual te mostrará el feriado y, en caso de no ser feriado, no te mostrará nada.</string>
+    <string name="StrgRespuesta3">R: El cronómetro muestra exactamente cuánto tiempo en horas,
+        minutos y segundos falta para el feriado más cercano a las 00:00 horas.</string>
+    <string name="StrgMainDetailHoliday">Aqui va la iformacion del dia feriado</string>
+</resources>
