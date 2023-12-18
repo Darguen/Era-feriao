@@ -22,7 +22,7 @@ class FeriadoAdapter
         var listItemView = convertView
         val holder: ViewHolder
 
-        if (listItemView != null)
+        if (listItemView == null)
         {
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             listItemView = inflater.inflate(R.layout.feriado_view_search, parent, false)

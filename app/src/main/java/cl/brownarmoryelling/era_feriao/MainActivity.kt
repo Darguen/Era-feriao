@@ -97,6 +97,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(about)
                 return true
             }
+            R.id.top5FeriadosCercanos->
+            {
+                val top5feriados = Intent(this, Top5FeriadosCercanosActivity::class.java)
+                startActivity(top5feriados)
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

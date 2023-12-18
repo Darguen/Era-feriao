@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Eraferiao"
         tools:targetApi="31">
         <activity
+            android:name=".Top5FeriadosCercanosActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultadoFeriadoPorFiltro"
             android:exported="false" />
         <activity
@@ -32,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

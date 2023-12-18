@@ -119,6 +119,7 @@
             android:layout_height="wrap_content"
             android:text="@string/wordLawsURL"
             android:textColor="@color/white" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
