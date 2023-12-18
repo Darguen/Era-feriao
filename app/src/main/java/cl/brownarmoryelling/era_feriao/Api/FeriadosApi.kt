@@ -33,6 +33,11 @@ class FeriadosApi  {
         return url
     }
 
+    fun getMonthData(year: String, month: String): String {
+        val url = "$URL/$year/$month"
+        return url
+    }
+
     fun getData(year: String, limit: String): String {
         val url = "$URL/$year?limit=$limit"
         return url

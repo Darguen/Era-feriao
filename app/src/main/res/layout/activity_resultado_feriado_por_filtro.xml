@@ -29,6 +29,7 @@
         app:layout_constraintVertical_bias="0.024" />
 
     <View
+        android:id="@+id/view6"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="10dp"
@@ -55,5 +56,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/barFiltrarRadius"
         app:layout_constraintTop_toTopOf="@+id/barFiltrarRadius" />
+
+    <ListView
+        android:id="@+id/holidayLV"
+        android:layout_width="415dp"
+        android:layout_height="686dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
