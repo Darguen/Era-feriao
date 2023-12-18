@@ -12,9 +12,19 @@ class FiltroDialog(private val context: Context) {
     private val feriadosApi = FeriadosApi()
     private lateinit var selectedOption: String
 
-    private var optionsDialogCallback: DialogCallback? = null
+    //private var optionsDialogCallback: DialogCallback? = null
     private lateinit var selectedFilter: String
     var selected = ""
+<<<<<<< Updated upstream
+=======
+    private  var specificDate = ""
+
+    fun showTop5HolidaysDialog()
+    {
+        showAnioDialog(1)
+    }
+
+>>>>>>> Stashed changes
     fun showOptionsDialog() {
         val options = arrayOf("Año", "Año y Mes", "Año, Mes y Día")
 
