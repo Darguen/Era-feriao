@@ -15,11 +15,11 @@ class FiltroDialog(private val context: Context) {
     private var optionsDialogCallback: DialogCallback? = null
     private lateinit var selectedFilter: String
     var selected = ""
-    private lateinit var specificDate : String
+    private var specificDate = ""
 
     fun showTop5HolidaysDialog()
     {
-        showAnioDialog(3)
+        showAnioDialog(1)
     }
 
     fun showOptionsDialog() {
