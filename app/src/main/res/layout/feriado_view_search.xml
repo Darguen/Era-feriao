@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="201dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,6 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/feriadoDateTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wordDate"
+            android:gravity="center"
+            android:textColor="@color/buttonPressed"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/feriadoNameTV"
@@ -32,12 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wordComments" />
-
-        <TextView
-            android:id="@+id/feriadoDateTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/wordDate" />
 
         <TextView
             android:id="@+id/feriadoInalienableTV"
