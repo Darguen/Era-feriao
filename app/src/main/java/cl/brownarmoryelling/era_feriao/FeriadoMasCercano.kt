@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
+import cl.brownarmoryelling.era_feriao.Adapters.FeriadoAdapter
 import cl.brownarmoryelling.era_feriao.Api.FeriadosApi
 import cl.brownarmoryelling.era_feriao.Background.ApiCallback
 import cl.brownarmoryelling.era_feriao.Background.ApiTask
@@ -14,33 +17,26 @@ import org.json.JSONArray
 import org.json.JSONException
 
 class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
+
+    private lateinit var adapter : ArrayAdapter<Feriado>
+    private lateinit var adapterElements : FeriadoAdapter
+    private lateinit var feriados : MutableList<Feriado>
+    private lateinit var feriadosLV : ListView
+
     private val filtroDialog = FiltroDialog(this)
     private val feriadosApi = FeriadosApi()
     private var URL: String = "https://apis.digital.gob.cl/fl/feriados/2013"
-    private lateinit var nombreTextView: TextView
-    private lateinit var comentariosTextView: TextView
-    private lateinit var fechaTextView: TextView
-    private lateinit var irrenunciableTextView: TextView
-    private lateinit var tipoTextView: TextView
-    private lateinit var leyesTextView: TextView
-    private lateinit var urlLeyesTextView: TextView
     private  var newUrl = URL
     private lateinit var option: String
-
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feriado_mas_cercano)
 
-        nombreTextView = findViewById(R.id.feriadoNameTV)
-        comentariosTextView = findViewById(R.id.feriadoCommentsTV)
-        fechaTextView = findViewById(R.id.feriadoDateTV)
-        irrenunciableTextView = findViewById(R.id.feriadoInalienableTV)
-        tipoTextView = findViewById(R.id.feriadoTypeTV)
-        leyesTextView = findViewById(R.id.feriadoLawsTV)
-        urlLeyesTextView = findViewById(R.id.feriadoLawsUrlTV)
         option = ""
         filtroDialog.showAnioDialog()
+
+        configureFeriadosLV()
 
         filtroDialog.setDialogCallback(object : FiltroDialog.DialogCallback {
             override fun onOptionSelected(selectedOption: String) {
@@ -59,14 +55,15 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         
     }
 
-
-
-    private fun apiRequest(URL: String, callback: ApiCallback): MutableList<Feriado> {
-        val apiRequestTask = ApiTask(callback)
-        return apiRequestTask.execute(URL)
+    private fun configureFeriadosLV()
+    {
+        feriadosLV = findViewById(R.id.nearHolidaysLV)
+        adapter = ArrayAdapter<Feriado>(this, android.R.layout.simple_list_item_1)
+        feriadosLV.adapter = adapter
     }
 
     fun processingData(result: String): MutableList<Feriado> {
+
         val list: MutableList<Feriado> = mutableListOf()
         Log.i("FeriadosApi", "JSON Response: $result")
 
@@ -82,12 +79,6 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                 val irrenunciable = feriadoObject.getString("irrenunciable")
                 val tipo = feriadoObject.getString("tipo")
 
-                nombreTextView.text = "Nombre: $nombre"
-                comentariosTextView.text = "Comentarios: $comentarios"
-                fechaTextView.text = "Fecha: $fecha"
-                irrenunciableTextView.text = "Irrenuncialbe: $irrenunciable"
-                tipoTextView.text = "Tipo: $tipo"
-
                 val leyesArray = feriadoObject.getJSONArray("leyes")
                 var leyesNombre: ArrayList<String>? = arrayListOf()
                 var leyesURL: ArrayList<String>? = arrayListOf()
@@ -96,9 +87,6 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
                     val leyObject = leyesArray.getJSONObject(j)
                     val leyNombre = leyObject.getString("nombre")
                     val leyUrl = leyObject.getString("url")
-
-                    leyesTextView.text = "Ley: $leyNombre"
-                    urlLeyesTextView.text = "Url de ley: $leyUrl"
 
                     leyesNombre?.add(leyNombre)
                     leyesURL?.add(leyUrl)
@@ -118,12 +106,20 @@ class FeriadoMasCercano : AppCompatActivity(), ApiCallback {
         return list.toMutableList()
     }
 
-    override fun onRequestComplete(result: String): MutableList<Feriado> {
-        Log.i("RequestComplete", result)
+    override fun onRequestComplete(result: String): MutableList<Feriado>
+    {
+        feriados = processingData(result)
 
-        return processingData(result)
+        setAdapter()
+
+        return feriados
     }
 
-
+    private fun setAdapter()
+    {
+        feriadosLV.invalidate()
+        adapterElements = FeriadoAdapter(this, R.layout.feriado_view_search, feriados)
+        feriadosLV.adapter = adapterElements
+    }
 
 }
