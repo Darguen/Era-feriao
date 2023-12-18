@@ -20,6 +20,8 @@ import java.util.Date
 import java.util.Locale
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
@@ -104,11 +106,14 @@ class MainActivity : AppCompatActivity() {
         // Crea un Runnable para actualizar el tiempo
         val runnable = object : Runnable {
             override fun run() {
-                // Obtén la hora actual
-                val horaActual = obtenerHoraActual()
+                // Obtén el tiempo restante hasta el 25 de diciembre
+                val tiempoRestante = obtenerTiempoRestanteHastaNavidad()
+                val horasRestantes = tiempoRestante.horas + tiempoRestante.dias * 24
 
-                // Actualiza el TextView
-                textViewTiempo.text = "$horaActual"
+                // Formatea y actualiza el TextView
+                val tiempoFormateado = "$horasRestantes:${tiempoRestante.minutos}:${tiempoRestante.segundos}"
+
+                textViewTiempo.text = tiempoFormateado
 
                 // Programa la siguiente actualización después de 1 segundo
                 handler.postDelayed(this, 1000)
@@ -119,14 +124,34 @@ class MainActivity : AppCompatActivity() {
         handler.post(runnable)
     }
 
-    private fun obtenerHoraActual(): String {
-        val formato = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-        return formato.format(Date())
+    private fun obtenerTiempoRestanteHastaNavidad(): TiempoRestante {
+        val navidad = obtenerFechaNavidad()
+        val ahora = Calendar.getInstance().time
+
+        // Calcula la diferencia en milisegundos
+        val diferenciaMillis = navidad.time - ahora.time
+
+        // Calcula días, horas, minutos y segundos
+        val diasRestantes = diferenciaMillis / (1000 * 60 * 60 * 24)
+        val horasRestantes = (diferenciaMillis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        val minutosRestantes = (diferenciaMillis % (1000 * 60 * 60)) / (1000 * 60)
+        val segundosRestantes = (diferenciaMillis % (1000 * 60)) / 1000
+
+        return TiempoRestante(diasRestantes, horasRestantes, minutosRestantes, segundosRestantes)
     }
 
-    override fun onDestroy() {
-        // Detén las actualizaciones al destruir la actividad para evitar pérdida de memoria
-        handler.removeCallbacksAndMessages(null)
-        super.onDestroy()
+    private fun obtenerFechaNavidad(): Date {
+        val formato = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val fechaNavidad = "2023-12-25"
+        return formato.parse(fechaNavidad)!!
     }
+    data class TiempoRestante(
+        val dias: Long,
+        val horas: Long,
+        val minutos: Long,
+        val segundos: Long
+    )
+
 }
+
+
